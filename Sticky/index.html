@@ -1,0 +1,47 @@
+<html ng-app ="noteApp">
+<head>
+<link rel="stylesheet" type="text/css" href="app/CSS/mystyles.css"/>    
+</head>    
+<body id="mainPage" ng-controller="noteController">
+  <header>
+<h2 style="float:left;">AddNote</h2>
+<h2 style="float:right;margin-right:10px;"><a href="trash.html">Trash</a></h2>
+    </header>
+  <section>
+    <div id="index" name="divform" class="mainForm">
+    <form ng-submit="addNote()">
+      <div>
+        <input type="text" name="title" id="title" placeholder="title" required="" ng-model="title">
+        <textarea name="content" id="content" placeholder="content" required="" rows="5" cols="30" ng-model="content"></textarea>
+        <input type="submit" class="button" value="Add Task"/>
+      </div>
+    </form>
+</div>
+    <img src="" id="demoImg" style="display:none;"/>
+      <ul id="todolist">
+<li class="todoList" ng-repeat="note in toDoNotes" >
+    <div class="menu">
+        <div class="dropdown">
+            <button class="dropbtn">☰</button>
+                <div class="dropdown-content">
+                <a href="#" ng-click="deleteNote(note)">Delete</a>
+                    <a href="#" ng-click="updateNote(note)">update</a>
+                </div>
+            </div>
+            <div class="noteContent"> 
+                <div class="heading">
+        <h1 ng-model="note.title">{{note.title}}</h1>
+    </div>
+                <textarea class= 'noteContent'ng-model="note.content"></textarea> 
+            </div>
+        
+    </div>
+</ul>     
+  </section>
+<script src="app/JS/angular.js"></script>
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="app/JS/ngStorage.js"></script>
+<script src="app/app.js"></script>
+</body>    
+</html>   
+
